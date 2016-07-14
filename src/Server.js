@@ -18,10 +18,12 @@ app.get('/search/:searchQuery', (req, res, next) => {
   PirateBay
     .search(searchQuery, Object.assign(
       {},
-      PirateBay.default.searchDefaults
+      PirateBay.default.searchDefaults,
       req.query
     ))
     .then(results => res.send(results));
 });
 
 app.listen(port);
+
+module.exports = app;
