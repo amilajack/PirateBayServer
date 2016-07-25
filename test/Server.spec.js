@@ -14,20 +14,16 @@ describe('API', () => {
           .expect(200)
           .expect('Content-Type', 'application/json; charset=utf-8')
           .end(function (error, result) {
-
-            console.log(result.body[0]);
-
-            const some = result.body[0]
+            const [apiResponse] = result.body;
 
             PirateBay
               .search('Game of Thrones')
               .then(res => {
-                console.log(res[0]);
-                const another = res[0];
-
-                expect(some).to.eql(another);
+                const [moduleResponse] = res;
+                expect(apiResponse).to.eql(moduleResponse);
                 done();
-              });
+              })
+              .catch(err => done(err));
           });
       } catch (err) {
         done(err);
@@ -36,26 +32,22 @@ describe('API', () => {
 
     it('should accept categories', (done) => {
       try {
-        request.get('/search/game%20of%20thrones&category=200')
+        request.get('/search/game%20of%20thrones?category=audio')
           .expect(200)
           .expect('Content-Type', 'application/json; charset=utf-8')
           .end(function (error, result) {
-
-            console.log(result);
-
-            const some = result
+            const [apiResponse] = result.body
 
             PirateBay
               .search('Game of Thrones', {
                 category: 'audio'
               })
               .then(res => {
-                console.log(res[0]);
-                const another = res[0];
-
-                expect(some).to.eql(another);
+                const [moduleResponse] = res;
+                expect(apiResponse).to.eql(moduleResponse);
                 done();
-              });
+              })
+              .catch(err => done(err));
           });
       } catch (err) {
         done(err);
