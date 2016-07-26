@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "thepiratebay": "^1.1.13"
+    "thepiratebay": "^1.1.14"
   },
   "engines": {
     "node": "6.x",
