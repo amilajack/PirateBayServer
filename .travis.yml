@@ -10,7 +10,7 @@ cache:
     - node_modules
 
 install:
-  - npm i -g npm@latest
+  - npm i -g npm
   - npm install
 
 script:

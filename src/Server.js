@@ -1,30 +1,27 @@
-import express from 'express';
-import { convertSubtitlesFromUrl } from './Subtitle';
-
-
+const PirateBay = require('thepiratebay');
+const express = require('express');
 const port = process.env.PORT || 3000;
 const app = express();
 
+
 console.log(`Serving on localhost:${port}`);
 
-app.get('/', (req, res) => {
-  res.send('API');
+app.get('/', (req, res, next) => {
+  res.send('API')
 });
 
-app.get('/subtitles/:srtUrl', async (req, res) => {
-  const srtUrl = req.params.srtUrl;
+app.get('/search/:searchQuery', (req, res, next) => {
+  const { searchQuery } = req.params;
 
-  if (req.headers.origin) {
-    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  }
+  console.log('Searching for: ', searchQuery);
 
-  res.writeHead(200, {
-    'Content-Type': 'text/vtt'
-  });
-
-  const buffer = await convertSubtitlesFromUrl(srtUrl);
-
-  res.end(buffer, 'base64');
+  PirateBay
+    .search(searchQuery, Object.assign(
+      {},
+      PirateBay.default.searchDefaults,
+      req.query
+    ))
+    .then(results => res.send(results));
 });
 
 app.listen(port);
