@@ -14,11 +14,6 @@ app.get('/', (req, res) => {
 app.get('/subtitles/:srtUrl', async (req, res) => {
   const srtUrl = req.params.srtUrl;
 
-  console.log(srtUrl);
-  console.log('http://dl.opensubtitles.org/en/download/src-api/vrf-19f00c62/sid-9762j5nq6vsvu4tf83bnhenqu5/filead/1951988772');
-
-  console.log('Searching for: ', srtUrl);
-
   if (req.headers.origin) {
     res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   }
