@@ -1,27 +1,35 @@
-const PirateBay = require('thepiratebay');
-const express = require('express');
+import express from 'express';
+import { convertSubtitlesFromUrl } from './Subtitle';
+
+
 const port = process.env.PORT || 3000;
 const app = express();
 
-
 console.log(`Serving on localhost:${port}`);
 
-app.get('/', (req, res, next) => {
-  res.send('API')
+app.get('/', (req, res) => {
+  res.send('API');
 });
 
-app.get('/search/:searchQuery', (req, res, next) => {
-  const { searchQuery } = req.params;
+app.get('/subtitles/:srtUrl', async (req, res) => {
+  const srtUrl = req.params.srtUrl;
 
-  console.log('Searching for: ', searchQuery);
+  console.log(srtUrl);
+  console.log('http://dl.opensubtitles.org/en/download/src-api/vrf-19f00c62/sid-9762j5nq6vsvu4tf83bnhenqu5/filead/1951988772');
 
-  PirateBay
-    .search(searchQuery, Object.assign(
-      {},
-      PirateBay.default.searchDefaults,
-      req.query
-    ))
-    .then(results => res.send(results));
+  console.log('Searching for: ', srtUrl);
+
+  if (req.headers.origin) {
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  }
+
+  res.writeHead(200, {
+    'Content-Type': 'text/vtt'
+  });
+
+  const buffer = await convertSubtitlesFromUrl(srtUrl);
+
+  res.end(buffer, 'base64');
 });
 
 app.listen(port);
