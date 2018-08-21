@@ -1,57 +1,46 @@
-const mocha = require('mocha');
 const PirateBay = require('thepiratebay');
-const server = require('../src/Server');
-const request = require('supertest')(server);
-const expect = require('chai').expect;
 
-
+jest.setTimeout(30000);
 
 describe('API', () => {
   describe('Search', () => {
-    it('should return same resonse as PirateBay', (done) => {
-      try {
-        request.get('/search/game%20of%20thrones')
-          .expect(200)
-          .expect('Content-Type', 'application/json; charset=utf-8')
-          .end(function (error, result) {
-            const [apiResponse] = result.body;
+    let server;
+    let request;
 
-            PirateBay
-              .search('Game of Thrones')
-              .then(res => {
-                const [moduleResponse] = res;
-                expect(apiResponse).to.eql(moduleResponse);
-                done();
-              })
-              .catch(err => done(err));
-          });
-      } catch (err) {
-        done(err);
-      }
+    beforeAll(() => {
+      const port = process.env.PORT || 3000;
+      server = require('../src/Server').listen(port);
+      request = require('supertest')(server);
     });
 
-    it('should accept categories', (done) => {
-      try {
-        request.get('/search/game%20of%20thrones?category=audio')
-          .expect(200)
-          .expect('Content-Type', 'application/json; charset=utf-8')
-          .end(function (error, result) {
-            const [apiResponse] = result.body
+    afterAll(() => {
+      server.close();
+    });
 
-            PirateBay
-              .search('Game of Thrones', {
-                category: 'audio'
-              })
-              .then(res => {
-                const [moduleResponse] = res;
-                expect(apiResponse).to.eql(moduleResponse);
-                done();
-              })
-              .catch(err => done(err));
-          });
-      } catch (err) {
-        done(err);
-      }
+    it('should return same resonse as PirateBay', async (done) => {
+      const result = await request.get('/search/game%20of%20thrones')
+        .expect(200)
+        .expect('Content-Type', 'application/json; charset=utf-8')
+
+      const [apiResponse] = result.body;
+
+      const res = await PirateBay.search('Game of Thrones');
+      const [moduleResponse] = res;
+      expect(apiResponse).toMatchSnapshot();
+    });
+
+    it('should accept categories', async (done) => {
+      const result = await request.get('/search/game%20of%20thrones?category=audio')
+        .expect(200)
+        .expect('Content-Type', 'application/json; charset=utf-8');
+
+      const [apiResponse] = result.body
+
+      const res = await PirateBay.search('Game of Thrones', {
+        category: 'audio'
+      });
+      const [moduleResponse] = res;
+      expect(apiResponse).toMatchSnapshot();
     });
   });
 });
