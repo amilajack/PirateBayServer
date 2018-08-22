@@ -15,8 +15,7 @@ describe('API', () => {
     let request;
 
     beforeAll(() => {
-      const port = process.env.PORT || 3000;
-      server = require('../').listen(port);
+      server = require('../');
       request = require('supertest')(server);
     });
 
