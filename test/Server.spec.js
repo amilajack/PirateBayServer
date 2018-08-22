@@ -1,6 +1,6 @@
 const PirateBay = require('thepiratebay');
 
-jest.setTimeout(30000);
+jest.setTimeout(20000);
 
 describe('API', () => {
   describe('Search', () => {
@@ -9,7 +9,7 @@ describe('API', () => {
 
     beforeAll(() => {
       const port = process.env.PORT || 3000;
-      server = require('../src/Server').listen(port);
+      server = require('../').listen(port);
       request = require('supertest')(server);
     });
 
@@ -17,7 +17,7 @@ describe('API', () => {
       server.close();
     });
 
-    it('should return same resonse as PirateBay', async (done) => {
+    it('should return same resonse as PirateBay', async () => {
       const result = await request.get('/search/game%20of%20thrones')
         .expect(200)
         .expect('Content-Type', 'application/json; charset=utf-8')
@@ -26,10 +26,12 @@ describe('API', () => {
 
       const res = await PirateBay.search('Game of Thrones');
       const [moduleResponse] = res;
+      delete apiResponse.seeders;
+      delete apiResponse.leechers;
       expect(apiResponse).toMatchSnapshot();
     });
 
-    it('should accept categories', async (done) => {
+    it('should accept categories', async () => {
       const result = await request.get('/search/game%20of%20thrones?category=audio')
         .expect(200)
         .expect('Content-Type', 'application/json; charset=utf-8');
@@ -40,6 +42,8 @@ describe('API', () => {
         category: 'audio'
       });
       const [moduleResponse] = res;
+      delete apiResponse.seeders;
+      delete apiResponse.leechers;
       expect(apiResponse).toMatchSnapshot();
     });
   });
