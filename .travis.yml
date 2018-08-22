@@ -1,17 +1,6 @@
-sudo: false
-
 language: node_js
 
 node_js:
-  - 6
+  - node
 
-cache:
-  directories:
-    - node_modules
-
-install:
-  - npm i -g npm
-  - npm install
-
-script:
-  - npm run test
+cache: yarn

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API Search should accept categories 1`] = `
+Object {
+  "category": Object {
+    "id": "100",
+    "name": "Audio",
+  },
+  "id": "9703960",
+  "link": "https://thepiratebay.org/torrent/9703960/Game_of_Thrones_(Books_1-5)_[Single_file_per_book_w_Chapters]_-_",
+  "magnetLink": "magnet:?xt=urn:btih:e3ee197ba3d57672dfa241c378e18d1142d93f3d&dn=Game+of+Thrones+%28Books+1-5%29+%5BSingle+file+per+book+w%2FChapters%5D+-+&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969",
+  "name": "Game of Thrones (Books 1-5) [Single file per book w/Chapters] - ",
+  "size": "1.39 GiB",
+  "subcategory": Object {
+    "id": "102",
+    "name": "Audio books",
+  },
+  "uploadDate": "03-05 2014",
+  "uploader": "bobbybigguns",
+  "uploaderLink": "https://thepiratebay.org/user/bobbybigguns/",
+  "verified": false,
+}
+`;
+
+exports[`API Search should accept categories 2`] = `
+Object {
+  "category": Object {
+    "id": "100",
+    "name": "Audio",
+  },
+  "id": "9703960",
+  "link": "https://thepiratebay.org/torrent/9703960/Game_of_Thrones_(Books_1-5)_[Single_file_per_book_w_Chapters]_-_",
+  "magnetLink": "magnet:?xt=urn:btih:e3ee197ba3d57672dfa241c378e18d1142d93f3d&dn=Game+of+Thrones+%28Books+1-5%29+%5BSingle+file+per+book+w%2FChapters%5D+-+&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969",
+  "name": "Game of Thrones (Books 1-5) [Single file per book w/Chapters] - ",
+  "size": "1.39 GiB",
+  "subcategory": Object {
+    "id": "102",
+    "name": "Audio books",
+  },
+  "uploadDate": "03-05 2014",
+  "uploader": "bobbybigguns",
+  "uploaderLink": "https://thepiratebay.org/user/bobbybigguns/",
+  "verified": false,
+}
+`;
+
+exports[`API Search should return same resonse as PirateBay 1`] = `
+Object {
+  "category": Object {
+    "id": "200",
+    "name": "Video",
+  },
+  "id": "18493751",
+  "link": "https://thepiratebay.org/torrent/18493751/Game_of_Thrones_S07_Complete_Season_7_720p_x264_AC3_5.1_(MP4)",
+  "magnetLink": "magnet:?xt=urn:btih:4f9b0d42cc170b43a3816279a2dc24cbb9dac107&dn=Game+of+Thrones+S07+Complete+Season+7+720p+x264+AC3+5.1+%28MP4%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969",
+  "name": "Game of Thrones S07 Complete Season 7 720p x264 AC3 5.1 (MP4)",
+  "size": "4.33 GiB",
+  "subcategory": Object {
+    "id": "208",
+    "name": "HD - TV shows",
+  },
+  "uploadDate": "08-28 2017",
+  "uploader": "Iznogoud9",
+  "uploaderLink": "https://thepiratebay.org/user/Iznogoud9/",
+  "verified": true,
+}
+`;
+
+exports[`API Search should return same resonse as PirateBay 2`] = `
+Object {
+  "category": Object {
+    "id": "200",
+    "name": "Video",
+  },
+  "id": "18493751",
+  "link": "https://thepiratebay.org/torrent/18493751/Game_of_Thrones_S07_Complete_Season_7_720p_x264_AC3_5.1_(MP4)",
+  "magnetLink": "magnet:?xt=urn:btih:4f9b0d42cc170b43a3816279a2dc24cbb9dac107&dn=Game+of+Thrones+S07+Complete+Season+7+720p+x264+AC3+5.1+%28MP4%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969",
+  "name": "Game of Thrones S07 Complete Season 7 720p x264 AC3 5.1 (MP4)",
+  "size": "4.33 GiB",
+  "subcategory": Object {
+    "id": "208",
+    "name": "HD - TV shows",
+  },
+  "uploadDate": "08-28 2017",
+  "uploader": "Iznogoud9",
+  "uploaderLink": "https://thepiratebay.org/user/Iznogoud9/",
+  "verified": true,
+}
+`;
